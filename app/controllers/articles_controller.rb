@@ -20,4 +20,9 @@ class ArticlesController < ApplicationController
       render :new, status: :unprocessable_entity # redisplays the form
     end
   end
+
+  private
+  def article_params
+    params.require(:article).permit(:title, :body) # the create action can access with params[:article][:title]
+  end
 end
