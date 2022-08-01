@@ -4,7 +4,8 @@
 
   <% @articles.each do |article| %>  <%# "<%" evaluate the enclosed Ruby code%>
     <li>
-      <%= article.title %> <%# "<%=" evaluate the enclosed Ruby code, and output the value it returns.%>
+        <%# with the resources method it can be used article_path to link: article_path(article)%>
+        <%= link_to article.title, article %> <%# "<%=" evaluate the enclosed Ruby code, and output the value it returns.%>
     </li>
   <% end %>
 </ul>
