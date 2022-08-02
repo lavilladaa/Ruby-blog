@@ -1,14 +1,8 @@
 class Article < ApplicationRecord
+  include Visible
+
   has_many :comments
 
   validates :title, presence: true # title must contain at least one non-whitespace character
   validates :body, presence: true, length: { minimum: 10 }
-
-  VALID_STATUSES = ['public', 'private', 'archived']
-
-  validates :status, inclusion: { in: VALID_STATUSES }
-
-  def archived?
-    status == 'archived'
-  end
 end
