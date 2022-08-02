@@ -1,12 +1,14 @@
 <h1>Articles</h1>
 
-<ul>
+Our blog has <%= Article.public_count %> articles and counting!
 
-  <% @articles.each do |article| %>  <%# "<%" evaluate the enclosed Ruby code%>
-    <li>
-        <%# with the resources method it can be used article_path to link: article_path(article)%>
-        <%= link_to article.title, article %> <%# "<%=" evaluate the enclosed Ruby code, and output the value it returns.%>
-    </li>
+<ul>
+  <% @articles.each do |article| %>
+    <% unless article.archived? %>
+      <li>
+        <%= link_to article.title, article %>
+      </li>
+    <% end %>
   <% end %>
 </ul>
 
