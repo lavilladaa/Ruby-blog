@@ -1,4 +1,5 @@
 <% unless comment.archived? %>
+
 <p>
   <strong>Commenter:</strong>
   <%= comment.commenter %>
@@ -15,3 +16,5 @@
                 turbo_confirm: "Are you sure?"
               } %>
 </p>
+
+<% end %>
