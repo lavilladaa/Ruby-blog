@@ -43,7 +43,7 @@ class ArticlesController < ApplicationController
   end
 
   private
-  
+
   def article_params
     params.require(:article).permit(:title, :body) # the create action can access with params[:article][:title]
   end
