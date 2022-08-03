@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
-
-  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show] # to use the authentication system
+  # To use the authentication system
+  http_basic_authenticate_with name: 'dhh', password: 'secret', except: [:index, :show]
 
   def index
     @articles = Article.all
@@ -18,9 +18,10 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
-      redirect_to @article # if the article is saved successfully
+      # If the article is saved successfully
+      redirect_to @article
     else
-      render :new, status: :unprocessable_entity # redisplays the form
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -40,6 +41,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article = Article.find(params[:id])
+
     @article.destroy
 
     redirect_to root_path, status: :see_other
@@ -48,6 +50,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :body, :status) # the create action can access with params[:article][:title]
+    # The create action can access with params[:article][:title]
+    params.require(:article).permit(:title, :body, :status)
   end
 end
