@@ -1,3 +1,4 @@
+<div class='container'>
 <% unless comment.archived? %>
 
 <p>
@@ -10,11 +11,12 @@
   <%= comment.body %>
 </p>
 
-<p>
+<div class='btn btn-outline-danger mb-3'>
   <%= link_to "Destroy Comment", [comment.article, comment], data: {
                 turbo_method: :delete,
                 turbo_confirm: "Are you sure?"
               } %>
-</p>
+</div>
 
 <% end %>
+</div>
