@@ -1,24 +1,24 @@
 <div class='container'>
-<h1 class='text-center mt-3'><%= @article.title %></h1>
+  <h1 class='text-center mt-3'><%= @article.title %></h1>
 
-<p><%= @article.body %></p>
+  <p><%= @article.body %></p>
 
-<ul class='d-flex justify-content-center gap-3'>
-  <div class='btn btn-outline-primary'>
-    <li><%= link_to "Edit", edit_article_path(@article), class: 'text-dark'  %></li>
-  </div>
-  <div class='btn btn-outline-danger'>
-  <li><%= link_to "Destroy", article_path(@article), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  }, class: 'text-dark' %>
-  </li>
-  </div>
-</ul>
+  <ul class='d-flex justify-content-center gap-3'>
+    <div class='btn btn-outline-primary'>
+      <li><%= link_to "Edit", edit_article_path(@article), class: 'text-dark'  %></li>
+    </div>
+    <div class='btn btn-outline-danger'>
+    <li><%= link_to "Destroy", article_path(@article), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"
+                    }, class: 'text-dark' %>
+    </li>
+    </div>
+  </ul>
 
-<h2>Comments</h2>
-<%= render @article.comments %>
+  <h2>Comments</h2>
+  <%= render @article.comments %>
 
-<h2>Add a comment:</h2>
-<%= render 'comments/form' %>
+  <h2>Add a comment:</h2>
+  <%= render 'comments/form' %>
 </div>

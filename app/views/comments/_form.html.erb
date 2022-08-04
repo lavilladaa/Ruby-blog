@@ -1,9 +1,10 @@
-<div>
+<div class='container'>
 <%= form_with model: [ @article, @article.comments.build ] do |form| %>
   <p>
     <%= form.label :commenter, class: 'form-label' %><br>
     <%= form.text_field :commenter, class: 'form-control' %>
   </p>
+
   <p>
     <%= form.label :body, class: 'form-label' %><br>
     <%= form.text_area :body, class: 'form-control' %>
@@ -16,6 +17,5 @@
       <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
     </div>
   </div>
-
 <% end %>
 </div>
