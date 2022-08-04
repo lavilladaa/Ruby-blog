@@ -14,8 +14,13 @@
       <% end %>
     <% end %>
   </ul>
-
-    <div class='d-flex justify-content-center'>
-      <%= link_to 'New Article', new_article_path, class: 'btn btn-secondary mt-3' %>
-    </div>
+  <% if user_signed_in?%>
+      <div class='d-flex justify-content-center'>
+        <%= link_to 'New Article', new_article_path, class: 'btn btn-secondary mt-3' %>
+      </div>
+  <% else %>
+      <div class='d-flex justify-content-center'>
+        <%= link_to 'New Article', new_user_registration_path, class: 'btn btn-secondary mt-3' %>
+      </div>
+  <% end %>
 </div>
