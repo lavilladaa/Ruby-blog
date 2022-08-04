@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Blog</title>
+    <title>Articles Blog</title>
     <meta name='viewport' content='width=device-width,initial-scale=1'>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,8 +11,11 @@
   </head>
 
   <body>
-      <% if notice %><div class='alert alert-info'> <%= notice %> </div><% end %>
-      <% if alert %><div class='alert alert-warning'> <%= alert %> </div><% end %>
       <%= yield %>
+
+    <div class='mt-3' >
+      <% if notice %><div class='alert alert-success'> <%= notice %> </div><% end %>
+      <% if alert %><div class='alert alert-warning'> <%= alert %> </div><% end %>
+    </div>
   </body>
 </html>
