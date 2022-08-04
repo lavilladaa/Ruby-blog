@@ -1,3 +1,5 @@
+<%= render 'navbar' %>
+
 <div class='container'>
   <h1 class='text-center mt-3'><%= @article.title %></h1>
 
@@ -5,12 +7,12 @@
 
   <ul class='d-flex justify-content-center gap-3'>
     <div class='btn btn-outline-primary'>
-      <li><%= link_to "Edit", edit_article_path(@article), class: 'text-dark'  %></li>
+      <li><%= link_to 'Edit', edit_article_path(@article), class: 'text-dark'  %></li>
     </div>
     <div class='btn btn-outline-danger'>
-    <li><%= link_to "Destroy", article_path(@article), data: {
+    <li><%= link_to 'Destroy', article_path(@article), data: {
                       turbo_method: :delete,
-                      turbo_confirm: "Are you sure?"
+                      turbo_confirm: 'Are you sure?'
                     }, class: 'text-dark' %>
     </li>
     </div>
