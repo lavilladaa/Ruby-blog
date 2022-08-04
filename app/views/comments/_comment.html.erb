@@ -1,21 +1,22 @@
 <div class='container'>
   <% unless comment.archived? %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
+    <p>
+      <strong>Commenter:</strong>
+      <%= comment.commenter %>
+    </p>
 
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-  <% if user_signed_in?%>
-    <div class='btn btn-outline-danger mb-3'>
-      <%= link_to 'Destroy Comment', [comment.article, comment], data: {
-                    turbo_method: :delete,
-                    turbo_confirm: 'Are you sure?'
-                  } %>
-    </div>
-  <% end %>
+    <p>
+      <strong>Comment:</strong>
+      <%= comment.body %>
+    </p>
+
+    <% if user_signed_in?%>
+      <div class='btn btn-outline-danger mb-3'>
+        <%= link_to 'Destroy Comment', [comment.article, comment], data: {
+                      turbo_method: :delete,
+                      turbo_confirm: 'Are you sure?'
+                    } %>
+      </div>
+    <% end %>
   <% end %>
 </div>
