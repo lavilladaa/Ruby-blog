@@ -7,6 +7,4 @@ class Article < ApplicationRecord
   # Title must contain at least one non-whitespace character
   validates :title, presence: true
   validates :body, presence: true, length: { minimum: 10 }
-
-  belongs_to :user
 end
