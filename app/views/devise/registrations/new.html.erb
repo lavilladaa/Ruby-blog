@@ -7,7 +7,12 @@
     <%= render 'devise/shared/error_messages', resource: resource %>
 
     <div class='field'>
-      <%= f.label :email, class: 'form-label h5 mt-1' %><br />
+      <%= f.label :user_name, class: 'form-label h5 mt-1' %><br />
+      <%= f.text_field :user_name, autofocus: true, autocomplete: 'user_name', class:'form-control' %>
+    </div>
+
+    <div class='field'>
+      <%= f.label :email, class: 'form-label h5 mt-3' %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: 'email', class:'form-control' %>
     </div>
 

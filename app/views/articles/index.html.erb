@@ -8,8 +8,8 @@
   <ul class='list-group'>
     <% @articles.each do |article| %>
       <% unless article.archived? %>
-        <li class='list-group-item text-dark'>
-          <%= link_to article.title, article %>
+        <li class='list-group-item ul-articles'>
+          <%= link_to article.title, article, class: 'text-dark' %>
         </li>
       <% end %>
     <% end %>
