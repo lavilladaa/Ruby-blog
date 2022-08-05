@@ -8,8 +8,9 @@
   <ul class='list-group'>
     <% @articles.each do |article| %>
       <% unless article.archived? %>
-        <li class='list-group-item ul-articles'>
-          <%= link_to article.title, article, class: 'text-dark' %>
+        <li class='list-group-item d-flex justify-content-around align-items-center'>
+          <p class='mb-0'><%= link_to article.title, article, class: 'text-dark li-articles' %></p>
+          <p class='mb-0'><%= link_to @user.user_name, user_path(@user), class: 'text-dark li-articles' %></p>
         </li>
       <% end %>
     <% end %>

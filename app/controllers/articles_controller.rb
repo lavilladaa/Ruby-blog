@@ -4,10 +4,14 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
+
+    @user = User.find_by(params[:user_id])
   end
 
   def show
     @article = Article.find(params[:id])
+    #@user = User.find(params[:id])
+    @user = User.find_by(params[:user_id])
   end
 
   def new
