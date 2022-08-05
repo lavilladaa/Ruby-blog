@@ -10,7 +10,7 @@
       <ul class='nav navbar-nav navbar-right'>
         <% if user_signed_in? %>
           <div class='d-flex gap-3'>
-            <li><%= current_user.email %></li>
+            <li><%= link_to current_user.user_name, current_user %></li>
             <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
           </div>
         <% else %>
