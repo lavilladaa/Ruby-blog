@@ -2,11 +2,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @article = Article.find_by(params[:user_id])
   end
-
-  # def index
-  # @article
-  # end
 
   private
 
