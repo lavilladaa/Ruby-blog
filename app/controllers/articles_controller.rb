@@ -15,7 +15,12 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    #@article = Article.new(article_params)
+
+    @user = User.find(current_user.id)
+
+    @article = @user.articles.create(article_params)
+
 
     if @article.save
       # If the article is saved successfully
