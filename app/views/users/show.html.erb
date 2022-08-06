@@ -9,7 +9,7 @@
       <p>Followed</p>
   </div>
   <%# <% if @article.user_id == current_user.id %>
-  <% if user_signed_in? %>
+  <% if user_signed_in? and Article.any? %>
     <% @articles.each do |article| %>
       <div class='card mb-3'>
         <div class="card-body">
