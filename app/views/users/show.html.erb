@@ -8,6 +8,15 @@
       <p>Following</p>
       <p>Followed</p>
   </div>
-  <h2><%= @article.title %></h2>
-  <p><%= @article.body %></p>
+  <%# <% if @article.user_id == current_user.id %>
+  <% if user_signed_in? %>
+    <% @articles.each do |article| %>
+      <div class='card mb-3'>
+        <div class="card-body">
+          <h5 class="card-title"><%= article.title %></h5>
+          <p class="card-text"><%= article.body %></p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 </div>

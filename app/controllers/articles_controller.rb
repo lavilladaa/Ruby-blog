@@ -1,17 +1,18 @@
 class ArticlesController < ApplicationController
-  # To use the authentication system
-  http_basic_authenticate_with name: 'dhh', password: 'secret', except: [:index, :show]
-
   def index
     @articles = Article.all
 
-    @user = User.find_by(params[:user_id])
+    #@user = User.find_by(params[:id])
+    puts 'xxx'*50
+    puts params[:id]
   end
 
   def show
     @article = Article.find(params[:id])
-    #@user = User.find(params[:id])
+
     @user = User.find_by(params[:user_id])
+    puts 'sss'*50
+    puts params[:user_id]
   end
 
   def new
@@ -19,12 +20,13 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    #@article = Article.new(article_params)
-
+    # if Article.public_count ==0
+    #   @user = current_user
+    # else
+    #   @user = User.find_by(current_user.id)
+    # end
     @user = User.find(current_user.id)
-
     @article = @user.articles.create(article_params)
-
 
     if @article.save
       # If the article is saved successfully
@@ -60,6 +62,6 @@ class ArticlesController < ApplicationController
 
   def article_params
     # The create action can access with params[:article][:title]
-    params.require(:article).permit(:title, :body, :status)
+    params.require(:article).permit(:title, :body, :status, :user_id)
   end
 end

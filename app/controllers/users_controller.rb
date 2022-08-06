@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-
   def show
     @user = User.find(params[:id])
-    @article = Article.find_by(params[:user_id])
+
+    @articles = Article.includes(:user).where(articles: { user_id: params[:id] })
   end
 
   private
