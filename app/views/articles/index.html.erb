@@ -11,8 +11,7 @@
         <li class='list-group-item d-flex justify-content-between align-items-center'>
           <p class='mb-0'><%= link_to article.title, article, class: 'text-dark li-articles' %></p>
           <% if user_signed_in? %>
-          <% author = User.find(article.user_id)  %>
-          <p class='mb-0'><%= link_to author.user_name, user_path(article.user_id), class: 'text-dark li-articles' %></p>
+          <p class='mb-0'><%= link_to article.user.user_name, user_path(article.user_id), class: 'text-dark li-articles' %></p>
           <% end %>
         </li>
       <% end %>

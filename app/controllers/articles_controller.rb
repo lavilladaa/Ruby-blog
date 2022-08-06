@@ -1,18 +1,10 @@
 class ArticlesController < ApplicationController
   def index
     @articles = Article.all
-
-    #@user = User.find_by(params[:id])
-    puts 'xxx'*50
-    puts params[:id]
   end
 
   def show
     @article = Article.find(params[:id])
-
-    @user = User.find_by(params[:user_id])
-    puts 'sss'*50
-    puts params[:user_id]
   end
 
   def new
@@ -20,11 +12,6 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    # if Article.public_count ==0
-    #   @user = current_user
-    # else
-    #   @user = User.find_by(current_user.id)
-    # end
     @user = User.find(current_user.id)
     @article = @user.articles.create(article_params)
 
