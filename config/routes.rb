@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
   end
+
+  resource :relationships, only: [:create, :destroy]
 end

@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
+    if current_user.id == params[:user_id]
+      @user = User.find_by(params[:user_id])
+    else
+      @user = User.find(params[:id])
+    end
 
     @articles = Article.includes(:user).where(articles: { user_id: params[:id] })
   end
