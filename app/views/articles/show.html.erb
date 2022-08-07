@@ -27,5 +27,7 @@
     <%= render @article.comments %>
   <% end %>
 
-  <%= render 'comments/form' %>
+  <% if current_user.following?(@user) %>
+    <%= render 'comments/form' %>
+  <% end %>
 </div>
