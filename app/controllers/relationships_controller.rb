@@ -1,7 +1,7 @@
 class RelationshipsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :find_user
+  before_action :find_user # To define user first before executing the other methods.
 
   def create
     current_user.follow(@user)

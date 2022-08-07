@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     else
       @user = User.find(params[:id])
     end
-
+    # @article = Article.find(params[:id])
     @articles = Article.includes(:user).where(articles: { user_id: params[:id] })
   end
 
