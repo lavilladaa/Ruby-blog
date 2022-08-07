@@ -28,4 +28,16 @@
     </div>
   <% end %>
 
+  <% if user_signed_in? %>
+    <h1 class='text-center mt-3'>Users</h1>
+
+    <ul class='list-group my-3 w-50 mx-auto'>
+      <% @users.each do |user| %>
+        <li class='list-group-item d-flex justify-content-center align-items-center'>
+          <p class='mb-0'><%= link_to user.user_name, user_path(user.id), class: 'text-dark li-articles' %></p>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
 </div>

@@ -14,7 +14,8 @@
       <% end %>
     <% end %>
   </div>
- <% if user_signed_in? and Article.any? %>
+
+  <% if user_signed_in? and Article.any? %>
     <% @articles.each do |article| %>
       <div class='card my-3'>
         <div class="card-body">
@@ -22,10 +23,27 @@
           <p class="card-text"><%= article.body %></p>
         </div>
       </div>
-      <h2>Comments</h2>
-        <%= render article.comments %>
+
+      <ul class='d-flex justify-content-center gap-3'>
+        <div class='btn btn-outline-primary'>
+          <li><%= link_to 'Edit', edit_article_path(article), class: 'text-dark'  %></li>
+        </div>
+
+        <div class='btn btn-outline-danger'>
+          <li><%= link_to 'Destroy', article_path(article), data: {
+                              turbo_method: :delete,
+                              turbo_confirm: 'Are you sure?'
+                            }, class: 'text-dark' %>
+          </li>
+        </div>
+      </ul>
+
+      <% if article.comments.any? %>
+        <h2>Comments</h2>
+          <%= render article.comments %>
+      <% end %>
+
       <% if current_user.following?(@user) %>
-      <h2>Add a comment:</h2>
         <% @article = article %>
         <%= render 'comments/form' %>
       <% end %>
@@ -33,3 +51,12 @@
   <% end %>
 </div>
 
+  <% if user_signed_in? %>
+    <div class='d-flex justify-content-center'>
+      <%= link_to 'New Article', new_article_path, class: 'btn btn-secondary mt-3' %>
+    </div>
+  <% else %>
+    <div class='d-flex justify-content-center'>
+      <%= link_to 'New Article', new_user_registration_path, class: 'btn btn-secondary mt-3' %>
+    </div>
+  <% end %>

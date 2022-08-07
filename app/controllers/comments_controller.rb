@@ -7,6 +7,8 @@ class CommentsController < ApplicationController
 
     @comment = @article.comments.create(comment_params)
 
+    @comment.update(user_id: current_user.id)
+
     redirect_to article_path(@article)
   end
 
@@ -24,6 +26,6 @@ class CommentsController < ApplicationController
   private
 
     def comment_params
-      params.require(:comment).permit(:commenter, :body, :status)
+      params.require(:comment).permit(:commenter, :body, :status, :user_id)
     end
 end
