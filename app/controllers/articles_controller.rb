@@ -47,6 +47,6 @@ class ArticlesController < ApplicationController
 
   def article_params
     # The create action can access with params[:article][:title]
-    params.require(:article).permit(:title, :body, :status, :user_id, :article_id)
+    params.require(:article).permit(:title, :body, :status, :user_id)
   end
 end
