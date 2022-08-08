@@ -8,7 +8,7 @@
       <% end %>
     </div>
 
-    <div class='container my-3'>
+    <div class='container'>
       <%= form.label :body, class: 'form-label h5 mb-0' %><br>
       <%= form.text_area :body, class:'form-control' %><br>
       <% article.errors.full_messages_for(:body).each do |message| %>
