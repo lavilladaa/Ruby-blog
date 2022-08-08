@@ -1,13 +1,22 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
 
+  def new
+    @comment = Comment.new
+  end
 
   def create
-    @article = Article.find(params[:article_id])
-    @comment = @article.comments.create(comment_params)
-    @comment.update(user_id: current_user.id)
+   @article = Article.find(params[:article_id])
+   #@comment = @article.comments.create(comment_params)
+   @comment = Comment.new(comment_params)
+   @comment.user_id = current_user.id
+   @comment.article_id = @article.id
+    if @comment.save
+      redirect_to article_path(@article)
+    else
+      puts 'not done'
+    end
 
-    redirect_to article_path(@article)
   end
 
 
@@ -22,6 +31,6 @@ class CommentsController < ApplicationController
   private
 
     def comment_params
-      params.require(:comment).permit(:commenter, :body, :status, :user_id)
+      params.require(:comment).permit(:id, :body, :created_at, :updated_at, :status, :article_id, :user_id)
     end
 end

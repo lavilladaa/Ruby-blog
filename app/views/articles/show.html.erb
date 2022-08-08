@@ -21,11 +21,12 @@
       <% end %>
     <% end %>
   </ul>
-
   <% if @article.comments.any? %>
     <h2>Comments</h2>
     <%= render @article.comments %>
   <% end %>
+  <%puts current_user.user_name%>
+  <%puts @user.user_name%>
 
   <% if current_user.following?(@user) %>
     <%= render 'comments/form' %>

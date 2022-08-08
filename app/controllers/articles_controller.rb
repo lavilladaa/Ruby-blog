@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @user = User.find_by(params[:article_id])
     @article = Article.find(params[:id])
   end
 
@@ -13,14 +14,12 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @user = User.find(current_user.id)
-    @article = @user.articles.create(article_params)
-
+    @article = Article.new(article_params)
+    @article.user_id = current_user.id
     if @article.save
-      # If the article is saved successfully
       redirect_to @article
     else
-      render :new, status: :unprocessable_entity
+      render :new
     end
   end
 
@@ -48,6 +47,6 @@ class ArticlesController < ApplicationController
 
   def article_params
     # The create action can access with params[:article][:title]
-    params.require(:article).permit(:title, :body, :status, :user_id)
+    params.require(:article).permit(:title, :body, :status, :user_id, :article_id)
   end
 end
