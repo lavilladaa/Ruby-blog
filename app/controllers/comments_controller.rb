@@ -7,16 +7,13 @@ class CommentsController < ApplicationController
 
   def create
    @article = Article.find(params[:article_id])
-   @comment = Comment.new(comment_params)
-   @comment.user_id = current_user.id
-   @comment.article_id = @article.id
+   @comment = Comment.new(comment_params.merge(user_id: current_user.id, article_id: @article.id))
     if @comment.save
       redirect_to article_path(@article)
     else
       redirect_to user_path(current_user)
     end
   end
-
 
   def destroy
     @article = Article.find(params[:article_id])
@@ -28,6 +25,6 @@ class CommentsController < ApplicationController
   private
 
     def comment_params
-      params.require(:comment).permit(:id, :body, :created_at, :updated_at, :status, :article_id, :user_id)
+      params.require(:comment).permit(:body, :status)
     end
 end

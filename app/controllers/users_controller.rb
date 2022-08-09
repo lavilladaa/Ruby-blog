@@ -1,17 +1,12 @@
 class UsersController < ApplicationController
   def show
-    if current_user.id == params[:user_id]
-      @user = User.find_by(params[:user_id])
-    else
-      @user = User.find(params[:id])
-    end
-    @articles = Article.includes(:user).where(articles: { user_id: params[:id] })
+    @user = User.find(params[:id])
+    @articles = @user.articles
   end
 
   private
 
   def user_params
-
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :user_name)
   end
 end
