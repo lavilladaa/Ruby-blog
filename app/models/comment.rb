@@ -3,4 +3,5 @@ class Comment < ApplicationRecord
 
   # Sets up an Active Record association (each comment belongs to an article)
   belongs_to :article
+  belongs_to :user
 end

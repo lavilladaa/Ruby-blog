@@ -7,4 +7,7 @@ class Article < ApplicationRecord
   # Title must contain at least one non-whitespace character
   validates :title, presence: true
   validates :body, presence: true, length: { minimum: 10 }
+
+  # Articles associated to the User with "article_id" on users table.
+  belongs_to :user, optional: true
 end

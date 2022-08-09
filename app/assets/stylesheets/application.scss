@@ -1,7 +1,8 @@
 @import "bootstrap";
+$color-blue:rgb(7, 92, 172);
 
 h1, h2 {
-  color: rgb(7, 92, 172);
+  color: $color-blue;
 }
 
 a:link {
@@ -14,5 +15,9 @@ ul{
 }
 
 .link-navbar:hover{
+  opacity: 0.5;
+}
+
+.li-articles:hover {
   opacity: 0.5;
 }
