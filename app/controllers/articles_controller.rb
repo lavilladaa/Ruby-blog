@@ -19,7 +19,6 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to @article
     else
-      puts 'c'*100
       render :new, status: :unprocessable_entity
     end
   end
